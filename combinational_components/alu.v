@@ -9,7 +9,7 @@ module alu(out, zeroFlag, in1, in2, aluControl);
     input[3: 0] aluControl;
     output reg[31: 0] out;
     output reg zeroFlag;
-    always @(in1, in2, aluOP) begin
+    always @(in1, in2, aluControl) begin
     if (in1 == in2) zeroFlag = 1;
     else zeroFlag = 0;
     end always @(in1, in2, aluControl)
