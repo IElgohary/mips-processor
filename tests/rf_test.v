@@ -1,4 +1,4 @@
-`include "../state_components/register_file.v"
+`include "../state_components/register.v"
 
 module Test
 
