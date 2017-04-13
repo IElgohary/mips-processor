@@ -3,7 +3,7 @@
 * and it is not complete
 */
 
-module main(out, zeroFlag, in1, in2, aluControl);
+module alu(out, zeroFlag, in1, in2, aluControl);
 
     input[31: 0] in1, in2;
     input[3: 0] aluControl;
@@ -21,7 +21,8 @@ module main(out, zeroFlag, in1, in2, aluControl);
         4'b 0110: out = in1 - in2   ;
         4'b 0111: out = (in1 < in2) ? 1 : 0 ;
         4'b 1100: out = ~ ( in1 | in2 );
-            
+        4'b 1111: out =  in1 << in2 [10:6];    
+        4'b 1110: out = in1 >> in2[10:6];    
             
         endcase 
     end 
