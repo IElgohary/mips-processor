@@ -1,4 +1,4 @@
-module alu_control (funct, AluOp, outp);
+module alu_control(funct, AluOp, outp);
     input [5:0] funct;
     input [1:0] AluOp;
     output [3:0] outp;
@@ -23,6 +23,13 @@ module alu_control (funct, AluOp, outp);
                else  if( funct==6'b101010) begin
                  outp=4'b0111;  
                 end
+         2'b11: if( funct==6'b 000000) begin    // Shift left 
+         outp= 4'b 1111;// shift left 
+         end
+         else 
+         if ( funct==6'b 000010) begin // shift right
+         outp= 4'b 1110; // shift right
+         end
         default: outp = 0;
         endcase
     end
