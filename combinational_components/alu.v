@@ -3,24 +3,26 @@
 * and it is not complete
 */
 
-module alu(out, zeroFlag, in1, in2, aluOP);
+module main(out, zeroFlag, in1, in2, aluControl);
 
-    input[31: 0] In1, in2;
-    input[3: 0] aluOP;
+    input[31: 0] in1, in2;
+    input[3: 0] aluControl;
     output reg[31: 0] out;
     output reg zeroFlag;
-    always @(in1, in2, aluOP) begin
+    always @(in1, in2, aluControl) begin
     if (in1 == in2) zeroFlag = 1;
     else zeroFlag = 0;
-    end always @(in1, in2, aluOP)
+    end always @(in1, in2, aluControl)
     begin
-        case (aluOP) 
-        0: out = in1 
-        1: out = in1 
-        2: out = in1 
-        3: out = in1 
-        4: out = in1 
-        5: out = in1 
+        case (aluControl) 
+        4'b 0000: out = in1 & in2  ;
+        4'b 0001: out = in1 | in2  ; 
+        4'b 0010: out = in1 + in2  ;
+        4'b 0110: out = in1 - in2   ;
+        4'b 0111: out = (in1 < in2) ? 1 : 0 ;
+        4'b 1100: out = ~ ( in1 | in2 );
+            
+            
         endcase 
     end 
 endmodule
