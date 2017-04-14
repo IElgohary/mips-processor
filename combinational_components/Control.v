@@ -6,7 +6,7 @@ output reg MemtoReg;
 output reg MemWrite;
 output reg ALUSrc;
 output reg RegWrite;
-output [1:0] ALUOp;
+output reg [1:0] ALUOp;
 input [5:0] OpCode;
 
 always @(OpCode)
