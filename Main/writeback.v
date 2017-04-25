@@ -1,16 +1,18 @@
-module writeback(writeData, rd_out, regWrite, ALUres, readData, rd, WB);
+module writeback(writeData, rd_out, regWrite, ALUres, readData, rd, regWrite_out, memToReg, clk);
 
-input [1:0] WB;
+input clk, regWrite, memToReg;
 input [31:0] readData, ALUres;
 input [4:0] rd;
 
+wire [31:0] readData_out, ALUres_out;
+wire memToReg_out;
+
 output wire [4:0] rd_out;
-output wire regWrite;
+output wire regWrite_out;
 output wire [31:0] writeData;
 
-mux m (writeData, readData , ALUres, WB[0]);
+MEM-WB wb(ALUres_out, readData_out, rd_out, regWrite_out, memToReg_out, ALUres, readData, rd, regWrite, memToReg, clk);
 
-assign rd_out = rd;
-assign regWrite = WB[1];
+mux m (writeData, readData_out , ALUres_out, memToReg_out);
 
 endmodule
