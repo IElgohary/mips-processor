@@ -17,7 +17,7 @@ initial begin
 end
 
 initial begin
-    $dumpfile("tests/simulation/im_test.vcd");    
+    $dumpfile("tests/simulation/rf_test.vcd");    
     $dumpvars(0, rf);
     $monitor("clk: %b, readData1: %d, readData2: %d", clk, readData1, readData2);
 end
