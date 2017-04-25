@@ -6,7 +6,7 @@ input [4:0] rd;
 
 output wire [4:0] rd_out;
 output wire regWrite;
-output wire writeData;
+output wire [31:0] writeData;
 
 mux m (writeData, readData , ALUres, WB[0]);
 
