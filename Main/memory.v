@@ -18,3 +18,5 @@ assign ALUres_out = ALUres;
 assign rd_out = rd;
 assign WB_out = WB;
 assign branchAddr_out = branchAddr;
+
+endmodule
