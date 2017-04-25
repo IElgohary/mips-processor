@@ -12,7 +12,7 @@ output [4:0] instruction2016, instruction1511;
 
 assign pcOut = pc;
 Control ctrl(RegDest, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWriteOut, instruction[31:26]);
-register_file rf(clk, instruction[25:16], instruction[20:16], WriteReg, RegWriteIn, WriteData, readData1, readData2);
+register_file rf(clk, instruction[25:21], instruction[20:16], WriteReg, RegWriteIn, WriteData, readData1, readData2);
 sign_extend se(signExtendOut, instruction[15:0]);
 assign instruction2016= instruction[20:16];
 assign instruction1511= instruction[15:11];
