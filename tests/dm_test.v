@@ -16,7 +16,7 @@ initial begin
 end
 
 initial begin
-    $dumpfile("dm_test.vcd");    
+    $dumpfile("tests/simulation/dm_test.vcd");    
     $dumpvars(0, dm);
     $monitor("clk: %b, address: %b, inData: %b, outData: %b", clk, address, inData, outData);
 end
