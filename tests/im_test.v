@@ -1,7 +1,7 @@
 module Test;
 
 reg clk;
-reg [9:0] readAddress;
+reg [31:0] readAddress;
 wire [31:0] instruction;
 
 instruction_memory im(clk, readAddress, instruction);

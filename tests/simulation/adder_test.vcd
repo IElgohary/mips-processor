@@ -1,0 +1,31 @@
+$date
+	Tue Apr 25 11:41:19 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module adder_test $end
+$scope module add $end
+$var wire 32 ! in1 [31:0] $end
+$var wire 32 " in2 [31:0] $end
+$var wire 32 # out [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx #
+bx "
+bx !
+$end
+#5
+b1000 #
+b11 "
+b101 !
+#15
+b101000 "
+b101010100 #
+b100101100 !
