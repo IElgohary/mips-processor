@@ -1,5 +1,5 @@
 $date
-	Tue Apr 25 04:31:30 2017
+	Tue Apr 25 13:38:09 2017
 $end
 $version
 	Icarus Verilog
@@ -8,46 +8,32 @@ $timescale
 	1s
 $end
 $scope module Test $end
-$scope module rf $end
+$scope module im $end
 $var wire 1 ! clk $end
-$var wire 5 " rd [4:0] $end
-$var wire 1 # regWrite $end
-$var wire 5 $ rs [4:0] $end
-$var wire 5 % rt [4:0] $end
-$var wire 32 & writeData [31:0] $end
-$var reg 32 ' readData1 [31:0] $end
-$var reg 32 ( readData2 [31:0] $end
+$var wire 10 " readAddress [9:0] $end
+$var reg 32 # instruction [31:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx (
-bx '
-bx &
-bx %
-bx $
-x#
+bx #
 bx "
 0!
 $end
 #5
-1#
-b1001 &
-b1 "
+b1010 "
 1!
 #10
 0!
 #15
-b1001 '
-b1 $
-0#
+b1010010110100100000100000 #
+b1101001 "
 1!
 #20
 0!
 #25
-b1001 (
-b0 '
-b1 %
-b0 $
+b100001010010011111111111111111 #
 1!
+#30
+0!
