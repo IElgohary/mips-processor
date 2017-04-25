@@ -8,10 +8,12 @@ input [31:0] pc, reg1, reg2, offset;
 input [4:0] rt, rd;
 input [0:1] ALUOp;
 input RegDest, ALUSrc, Branch, MemRead, MemWrite, RegWrite,MemtoReg, clock;
-reg [4:0] fun, rt1, rd1;
-reg [1:0] ALUOp1;
-reg [31:0] mulof,aluin,pc1, reg11, reg21, offset1;
-reg RegDest1, ALUSrc1;
+wire [4:0] rt1, rd1;
+wire [5:0] func;
+wire [1:0] ALUOp1;
+wire [3:0] aluControl;
+wire [31:0] mulof,aluin,pc1, reg11, reg21, offset1;
+wire RegDest1, ALUSrc1;
 IDEXreg regesters(pc1, reg11, reg21, offset1, rt1, rd1, RegDest1, ALUOp1, ALUSrc1, BranchOut, MemReadOut, MemWriteOut, RegWriteOut,MemtoRegOut,pc, reg1, reg2, offset, rt, rd, RegDest, ALUOp, ALUSrc, Branch, MemRead, MemWrite, RegWrite,MemtoReg, clock);
 
 assign mulof=offset1*4;
