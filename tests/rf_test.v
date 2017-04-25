@@ -1,11 +1,11 @@
-include "../state_components/register.v"
+//`include "../state_components/register.v"
 
-module Test
+module test;
 
 reg clk;
 reg [4:0] rs, rt, rd;
 reg [31:0] writeData;
-reg writeData;
+reg regWrite;
 wire [31:0] readData1, readData2;
 
 register_file rf(clk, rs, rt, rd, regWrite, writeData, readData1, readData2);
@@ -28,5 +28,5 @@ initial begin
 end
 
 initial
-#60 $finish
-endmodule    
+#60 $finish;
+endmodule
