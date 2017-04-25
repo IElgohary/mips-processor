@@ -1,11 +1,10 @@
-include "../state_components/register.v"
 
-module Test
+module Test;
 
 reg clk;
 reg [4:0] rs, rt, rd;
 reg [31:0] writeData;
-reg writeData;
+reg regWrite;
 wire [31:0] readData1, readData2;
 
 register_file rf(clk, rs, rt, rd, regWrite, writeData, readData1, readData2);
@@ -18,15 +17,29 @@ initial begin
 end
 
 initial begin
-    $monitor("clk: %b,readData1: %d, readData2: %d", clk, readData1, readData2);
-    #5 rs <= 2'b00;
-    #5 rd <= 2'b01;
-    #5 writeData <= 32'd9;
-    #5 regWrite <= 1;
-    #15 regWrite <= 0;
-    #5 rt <= 2'b01;
+    $dumpfile("tests/simulation/im_test.vcd");    
+    $dumpvars(0, rf);
+    $monitor("clk: %b, readData1: %d, readData2: %d", clk, readData1, readData2);
 end
 
+initial fork
+    #5 begin 
+        rd <= 1;
+        writeData <= 9;
+        regWrite <= 1;
+        end
+    #15 begin 
+        regWrite <= 0; 
+        rs <= 1;
+        end
+    #25 begin 
+        regWrite <= 0; 
+        rs <= 0;
+        rt <= 1;
+        end
+join
+
 initial
-#60 $finish
+#25 $finish;
+
 endmodule    
