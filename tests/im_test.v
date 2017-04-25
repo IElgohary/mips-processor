@@ -1,6 +1,4 @@
-include "../state_components/instruction_memory.v"
-
-module Test
+module Test;
 
 reg clk;
 reg [9:0] readAddress;
@@ -16,13 +14,15 @@ initial begin
 end
 
 initial begin
+    $dumpfile("tests/simulation/im_test.vcd");    
+    $dumpvars(0, im);
     $monitor("clk: %b,readAddress: %b, instruction: %b", clk, readAddress, instruction);
-    #5 readAddress <= 10'b0000000000;
-    #15 readAddress <= 10'b0000100001;
-    #15 readAddress <= 10'b0101010101;
-    #15 readAddress <= 10'b0011001100;
 end
+initial fork
+    #5 readAddress <= 10; 
+    #15 readAddress <= 105;
+join
 
 initial
-#60 $finish
+#30 $finish;
 endmodule    
