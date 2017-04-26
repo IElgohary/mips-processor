@@ -9,14 +9,10 @@ initial begin
     end
 end
 
-
-initial begin
-#25 $finish;
-end
-
 fetch fet(instruction, pc_out_fetch, pcSrc, clk, pc_branched);
+IDIFreg IDIFReg(inst_out,pc_out_IDIF,instruction,pc_out_fetch,clk);
 
-decode dec(clk, pc_out_fetch, instruction, WriteReg, writeData, regWrite_wb_to_decode, RegDest, Branch, MemRead, MemtoReg, ALUOp, 
+decode dec(clk, pc_out_IDIF, inst_out, WriteReg, writeData, regWrite_wb_to_decode, RegDest, Branch, MemRead, MemtoReg, ALUOp, 
 	MemWrite,ALUSrc,RegWriteOut_toEx, pc_out_to_ex, readData1, readData2, signExtendOut, instruction2016, instruction1511);
 
 ex ex(branchAddr,zero, ALUres, writeData_to_mem, writeReg_to_mem,branch_out_to_mem, memRead_to_mem, memWrite_to_mem, RegWriteOut_toMem,memToReg,pc_out_to_ex, readData1, readData2, signExtendOut, rt, rd, RegDest, ALUOp, ALUSrc, Branch, MemRead, MemWrite, RegWriteOut_toEx,MemtoReg, clk);
