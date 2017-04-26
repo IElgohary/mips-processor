@@ -4,7 +4,7 @@ module decode (clk, pc, instructionIn, WriteReg, WriteData, RegWriteIn, RegDest,
 input clk, RegWriteIn;
 input [31:0] pc, instructionIn, WriteData;
 input [4:0] WriteReg;
-output [3:0] controlOut; 
+ 
 output RegDest, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWriteOut;
 output [1:0] ALUOp;
 output [31:0] pcOut, readData1, readData2, signExtendOut;
