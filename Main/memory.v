@@ -12,6 +12,7 @@ output wire branch;
 wire branch_out, memWrite_out, memRead_out, PCSrc_out, memToReg_out, zero_out, regWrite_out;
 wire [31:0] writeData_out;
 
+assign WB_out = {regWrite_out, memToReg_out};
 EXMEMreg mem(branchAddr_out, zero_out, ALUres_out, writeData_out, rd_out, branch_out, memRead_out, memWrite_out, regWrite_out,memToReg_out,
                 branchAddr, zero, ALUres, writeData, rd, branch_in, memRead, memWrite, regWrite, memToReg, clk);
 
