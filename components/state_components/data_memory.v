@@ -3,7 +3,7 @@ module data_memory(outData, address, inData, memRead, memWrite, clk);
 
     input memRead, memWrite, clk;
     input [31:0] inData;
-    input [7:0] address;
+    input [31:0] address;
     output reg [31:0] outData;
     
     reg [31:0] memory[0:255];
@@ -18,12 +18,12 @@ module data_memory(outData, address, inData, memRead, memWrite, clk);
     
     always@(posedge clk && memRead && ~memWrite)
     begin// Read data
-        outData <= memory[address];
+        outData <= memory[address[7:0]];
     end
 
     always@(posedge clk && ~memRead && memWrite)
     begin//Write data
-        memory[address] <= inData;
+        memory[address[7:0]] <= inData;
     end
         
     
